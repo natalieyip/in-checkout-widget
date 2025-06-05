@@ -1,16 +1,11 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import { WidgetContainer } from './widget/components/widget-container';
+import App from './App';
 
-const scriptTag = document.currentScript as HTMLScriptElement;
-const clientKey = scriptTag?.getAttribute('data-client-key') || '';
-const dataConfig = scriptTag?.getAttribute('data-config');
-const dataReceived = dataConfig ? JSON.parse(dataConfig) : {};
-
-const container = document.getElementById('ny-container')!;
+const container = document.getElementById('root')!;
 createRoot(container).render(
   <StrictMode>
-    <WidgetContainer clientKey={clientKey} dataReceived={dataReceived} />
+    <App />
   </StrictMode>
 );
