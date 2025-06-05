@@ -1,7 +1,6 @@
 import { hydrateRoot } from 'react-dom/client';
 import { WidgetContainer } from './components/widget-container';
 import './styles/style.css';
-import ReactDOM from 'react-dom/client';
 
 function initializeWidget() {
   if (document.readyState !== 'loading') {
@@ -17,6 +16,8 @@ function onReady() {
     const shadow = element.attachShadow({ mode: 'open' });
     const shadowRoot = document.createElement('div');
     const clientKey = getClientKey();
+    const dataConfig = getDataConfig();
+    console.log('Widget data config:', dataConfig);
 
     shadowRoot.id = 'widget-root';
 
@@ -53,17 +54,15 @@ function getClientKey() {
   return clientKey;
 }
 
-initializeWidget();
+function getDataConfig() {
+  const script = document.currentScript as HTMLScriptElement;
+  const clientKey = script?.getAttribute('data-config');
 
-(window as any).createICWWidget = function createICWWidget() {
-  const container = document.getElementById('ny-test-container');
-  if (!container) {
-    console.error(`ICW: No container found with ID`);
-    return;
+  if (!clientKey) {
+    throw new Error('Missing data-config attribute');
   }
 
-  const root = ReactDOM.createRoot(container);
-  root.render(
-    <WidgetContainer clientKey={'testing'} />
-  );
-};
+  return JSON.parse(clientKey);
+}
+
+initializeWidget();
