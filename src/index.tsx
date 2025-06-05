@@ -1,6 +1,8 @@
 import { hydrateRoot } from 'react-dom/client';
-import { WidgetContainer } from './components/widget-container';
 import './styles/style.css';
+import { WidgetContainer } from './widget/components/widget-container';
+
+console.log('Widget script loaded');
 
 function initializeWidget() {
   console.log('am i doing anything?');
