@@ -1,6 +1,7 @@
 import { hydrateRoot } from 'react-dom/client';
 import { WidgetContainer } from './components/widget-container';
 import './styles/style.css';
+import ReactDOM from 'react-dom/client';
 
 function initializeWidget() {
   if (document.readyState !== 'loading') {
@@ -53,3 +54,16 @@ function getClientKey() {
 }
 
 initializeWidget();
+
+(window as any).createICWWidget = function createICWWidget() {
+  const container = document.getElementById('ny-test-container');
+  if (!container) {
+    console.error(`ICW: No container found with ID`);
+    return;
+  }
+
+  const root = ReactDOM.createRoot(container);
+  root.render(
+    <WidgetContainer clientKey={'testing'} />
+  );
+};
