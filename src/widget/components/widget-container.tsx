@@ -19,7 +19,7 @@ export function WidgetContainer({ clientKey } : WidgetContainerProps) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        getWidgetData()
+        getWidgetData(clientKey)
           .then((res) => {
             const modifiedPerils = res.perils.map((peril: any) => ({
               ...peril,
