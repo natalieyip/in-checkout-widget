@@ -3,13 +3,15 @@ import { getWidgetData } from '../../services/widget.service';
 import type { Peril } from '../../models/Peril.model';
 import type { Link } from '../../models/Link.model';
 import type { Underwriter } from '../../models/Underwriter.model';
+import { Icon } from '@mui/material';
+import '../styles/style.css'; // Adjust the path as necessary
 
 interface WidgetContainerProps {
   clientKey: string;
 }
 
 export function WidgetContainer({ clientKey } : WidgetContainerProps) {
-
+  console.log(clientKey)
   const [perils, setPerils] = useState<Peril[]>([]);
   const [links, setLinks] = useState<Link[]>([]);
   const [underwriterInfo, setUnderwriterInfo] = useState<Underwriter>();
@@ -27,7 +29,6 @@ export function WidgetContainer({ clientKey } : WidgetContainerProps) {
             setLinks(res.links);
             setUnderwriterInfo(res.underwriter);
         })
-
       } catch (err) {
 
       } finally {
@@ -47,7 +48,7 @@ export function WidgetContainer({ clientKey } : WidgetContainerProps) {
         <div className="perils-container">
           {perils.map((peril, index) => (
             <div key={index} className="peril">
-              {/* <Icon fontSize="small">{peril.icon}</Icon> */}
+              <Icon fontSize="small">{peril.icon}</Icon>
               <div>{peril.name}</div>
             </div>
           ))}
