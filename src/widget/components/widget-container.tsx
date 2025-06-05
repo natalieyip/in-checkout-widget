@@ -1,22 +1,70 @@
 import { useState, useEffect } from 'react';
-import { Widget } from './widget';
+import { getWidgetData } from '../../services/widget.service';
+import type { Peril } from '../../models/Peril.model';
+import type { Link } from '../../models/Link.model';
+import type { Underwriter } from '../../models/Underwriter.model';
 
 interface WidgetContainerProps {
   clientKey: string;
 }
 
-export function WidgetContainer({ clientKey }: WidgetContainerProps) {
-  const [mounted, setMounted] = useState(false);
-  console.log(clientKey);
+export function WidgetContainer({ clientKey } : WidgetContainerProps) {
+
+  const [perils, setPerils] = useState<Peril[]>([]);
+  const [links, setLinks] = useState<Link[]>([]);
+  const [underwriterInfo, setUnderwriterInfo] = useState<Underwriter>();
+
   useEffect(() => {
-    setMounted(true);
+    const fetchData = async () => {
+      try {
+        getWidgetData()
+          .then((res) => {
+            const modifiedPerils = res.perils.map((peril: any) => ({
+              ...peril,
+              icon: peril.icon.toLowerCase(),
+            }));
+            setPerils(modifiedPerils);
+            setLinks(res.links);
+            setUnderwriterInfo(res.underwriter);
+        })
+
+      } catch (err) {
+
+      } finally {
+
+      }
+    };
+
+    fetchData();
   }, []);
 
-  if (!mounted) {
-    return null;
-  }
-
   return (
-      <Widget />
+    <div className="container">
+      <div className="header">ENHANCED REFUND PROTECTION</div>
+      <div>
+        By adding FanShield, your total purchase of NUMBER can be refunded under
+        the covered reasons listed in the terms including:
+        <div className="perils-container">
+          {perils.map((peril, index) => (
+            <div key={index} className="peril">
+              {/* <Icon fontSize="small">{peril.icon}</Icon> */}
+              <div>{peril.name}</div>
+            </div>
+          ))}
+        </div>
+        <div className="links-container">
+          {links.map((link, index) => (
+            <div key={index}>
+              <a href={link.url} target="_blank" rel="noopener noreferrer">
+                <span>{link.type}</span>
+              </a>
+            </div>
+          ))}
+        </div>
+        <div className="underwriter-info">
+          {underwriterInfo && `${underwriterInfo.name} | ${underwriterInfo.id}`}
+        </div>
+      </div>
+    </div>
   );
 }
