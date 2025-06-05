@@ -3,6 +3,7 @@ import { WidgetContainer } from './components/widget-container';
 import './styles/style.css';
 
 function initializeWidget() {
+  console.log('am i doing anything?');
   if (document.readyState !== 'loading') {
     onReady();
   } else {
@@ -66,3 +67,7 @@ function getDataConfig() {
 }
 
 initializeWidget();
+
+(window as any).loadMyWidget = function () {
+  onReady(); // or call onReady() directly
+};
