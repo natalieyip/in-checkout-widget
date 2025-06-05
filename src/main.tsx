@@ -8,7 +8,7 @@ const clientKey = scriptTag?.getAttribute('data-client-key') || '';
 const dataConfig = scriptTag?.getAttribute('data-config');
 const dataReceived = dataConfig ? JSON.parse(dataConfig) : {};
 
-const container = document.getElementById('root')!;
+const container = document.getElementById('ny-container')!;
 createRoot(container).render(
   <StrictMode>
     <WidgetContainer clientKey={clientKey} dataReceived={dataReceived} />
