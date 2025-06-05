@@ -12,7 +12,8 @@ interface WidgetContainerProps {
 }
 
 export function WidgetContainer({ clientKey, dataReceived } : WidgetContainerProps) {
-  console.log(dataReceived)
+  console.log(dataReceived);
+  console.log(clientKey);
   const [perils, setPerils] = useState<Peril[]>([]);
   const [links, setLinks] = useState<Link[]>([]);
   const [underwriterInfo, setUnderwriterInfo] = useState<Underwriter>();

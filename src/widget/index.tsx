@@ -62,7 +62,7 @@ function getDataConfig() {
     throw new Error('Missing data-config attribute');
   }
 
-  return JSON.parse(clientKey);
+  return clientKey;
 }
 
 initializeWidget();
