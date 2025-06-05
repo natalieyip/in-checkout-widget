@@ -9,7 +9,7 @@ export const getWidgetData = async (clientKey: string) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-protecht-client-key': clientKey,
+          'x-protecht-api-key': clientKey,
         },
         body: JSON.stringify(dummyBody),
       });

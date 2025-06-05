@@ -8,10 +8,11 @@ import '../styles/style.css'; // Adjust the path as necessary
 
 interface WidgetContainerProps {
   clientKey: string;
+  dataReceived?: any;
 }
 
-export function WidgetContainer({ clientKey } : WidgetContainerProps) {
-  console.log(clientKey)
+export function WidgetContainer({ clientKey, dataReceived } : WidgetContainerProps) {
+  console.log(dataReceived)
   const [perils, setPerils] = useState<Peril[]>([]);
   const [links, setLinks] = useState<Link[]>([]);
   const [underwriterInfo, setUnderwriterInfo] = useState<Underwriter>();

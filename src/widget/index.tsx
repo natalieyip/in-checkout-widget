@@ -22,7 +22,7 @@ function onReady() {
     shadowRoot.id = 'widget-root';
 
     const component = (
-      <WidgetContainer clientKey={clientKey} />
+      <WidgetContainer clientKey={clientKey} dataReceived={dataConfig}/>
     );
 
     shadow.appendChild(shadowRoot);
