@@ -1,5 +1,5 @@
 import { hydrateRoot } from 'react-dom/client';
-import './styles/WidgetContainer.style.css';
+import widgetCss from './styles/WidgetContainer.style.css?inline';
 import { WidgetContainer } from './components/WidgetContainer';
 
 function initializeWidget() {
@@ -35,11 +35,14 @@ function onReady() {
 }
 
 function injectStyle(shadowRoot: HTMLElement) {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    const fileName = process.env.WIDGET_NAME || 'widget';
-    link.href = process.env.WIDGET_CSS_URL || `/${fileName}.css`;
-    shadowRoot.appendChild(link);
+    const style = document.createElement('style');
+    style.textContent = widgetCss;
+    shadowRoot.appendChild(style);
+    // const link = document.createElement('link');
+    // link.rel = 'stylesheet';
+    // const fileName = process.env.WIDGET_NAME || 'widget';
+    // link.href = process.env.WIDGET_CSS_URL || `/${fileName}.css`;
+    // shadowRoot.appendChild(link);
 }
 
 function getClientKey() {
