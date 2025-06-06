@@ -1,7 +1,6 @@
-import type { Peril } from "./Peril.model";
-import type { Underwriter } from "./Underwriter.model";
-import type { Link } from "./Link.model";
-
+import type { Peril } from './Peril.model';
+import type { Underwriter } from './Underwriter.model';
+import type { Link } from './Link.model';
 
 export type WidgetData = {
     currency?: string;
@@ -10,4 +9,4 @@ export type WidgetData = {
     underwriter?: Underwriter;
     perils: Peril[];
     links?: Link[];
-}
+};

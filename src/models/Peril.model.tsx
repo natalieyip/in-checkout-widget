@@ -3,4 +3,4 @@ export type Peril = {
     icon: string;
     style: string;
     featured: boolean;
-}
+};

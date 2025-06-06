@@ -1,13 +1,12 @@
-import './App.css'
-import { WidgetContainer } from './components/widget-container'
+import './App.css';
+import { WidgetContainer } from './components/widget-container';
 
 function App() {
-
-  return (
-    <>
-      <WidgetContainer clientKey='test'/>
-    </>
-  )
+    return (
+        <>
+            <WidgetContainer clientKey="test" />
+        </>
+    );
 }
 
-export default App
+export default App;
