@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
-import { getWidgetData } from '../services/widget.service';
-import type { Peril } from '../models/Peril.model';
-import type { Link } from '../models/Link.model';
-import type { Underwriter } from '../models/Underwriter.model';
 import { Icon } from '@mui/material';
 import '../styles/style.css'; // Adjust the path as necessary
+import { getWidgetData } from '../services/widget.service';
+import type { WidgetData } from '../models/WidgetData.model';
 
 interface WidgetContainerProps {
     clientKey: string;
@@ -12,11 +10,7 @@ interface WidgetContainerProps {
 }
 
 export function WidgetContainer({ clientKey }: WidgetContainerProps) {
-    console.log(clientKey);
-    const [perils, setPerils] = useState<Peril[]>([]);
-    const [links, setLinks] = useState<Link[]>([]);
-    const [quotedPrice, setQuotedPrice] = useState<number>(0);
-    const [underwriterInfo, setUnderwriterInfo] = useState<Underwriter>();
+    const [widgetData, setWidgetData] = useState<WidgetData>();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,18 +21,28 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
                         ...peril,
                         icon: peril.icon.toLowerCase(),
                     }));
-                    setPerils(modifiedPerils);
 
-                    setLinks(
-                        res.links.map((link: any) => ({
-                            ...link,
-                            type: mapLinkTypes(link.type),
-                        }))
-                    );
+                    const modifiedLinks = res.links.map((link: any) => ({
+                        ...link,
+                        type: mapLinkTypes(link.type),
+                      }));
 
-                    setUnderwriterInfo(res.underwriter);
+                    setWidgetData({
+                        ...res,
+                        perils: modifiedPerils,
+                        links: modifiedLinks,
+                        underwriter: res.underwriter,
+                        quote_literal: res.quote_literal,
+                        text: {
+                            title: res.theme_override.text.title,
+                            intro_paragraph: res.theme_override.text.intro_paragraph,
+                            fee_descriptor: res.theme_override.text.fee_descriptor,
+                            no_default: res.theme_override.text.no_default,
+                            yes_default: res.theme_override.text.yes_default
+                        }
+                    });
 
-                    setQuotedPrice(res.quote_literal);
+
                 });
             } catch (err) {
                 console.error('Error fetching widget data:', err);
@@ -70,14 +74,12 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
 
     return (
         <div className="container">
-            <div className="header">ENHANCED REFUND PROTECTION</div>
+            <div className="header">{widgetData?.text.title}</div>
             <div>
-                By adding FanShield, your total purchase of {quotedPrice} can be
-                refunded under the covered reasons listed in the terms
-                including:
+                {widgetData?.text.intro_paragraph}
             </div>
             <div className="perils-container">
-                {perils.map((peril, index) => (
+                {widgetData?.perils.map((peril, index) => (
                     <div key={index} className="peril">
                         <Icon fontSize="small">{peril.icon}</Icon>
                         <div>{peril.name}</div>
@@ -86,7 +88,7 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
             </div>
             <div>This is where the toggles will go</div>
             <div className="links-container">
-                {links.map((link, index) => (
+                {widgetData?.links && widgetData.links.map((link, index) => (
                     <div key={index}>
                         <a
                             href={link.url}
@@ -98,7 +100,7 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
                 ))}
             </div>
             <div className="underwriter-info">
-                {underwriterInfo && `Underwriter: ${underwriterInfo.name}`}
+                {widgetData?.underwriter && `Underwriter: ${widgetData.underwriter.name}`}
             </div>
         </div>
     );
