@@ -39,8 +39,8 @@ function onReady() {
 function injectStyle(shadowRoot: HTMLElement) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    const fileName = process.env.WIDGET_NAME || 'widget';
-    link.href = process.env.WIDGET_CSS_URL || `/${fileName}.css`;
+    // const fileName = process.env.WIDGET_NAME || 'widget';
+    link.href = 'https://in-checkout-widget.vercel.app/widget.css';
     shadowRoot.appendChild(link);
 }
 
