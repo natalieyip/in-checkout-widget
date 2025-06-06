@@ -1,0 +1,75 @@
+.header {
+    font-weight: 700;
+    font-size: 24px;
+    color: #b38e57;
+}
+
+.perils-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 20px;
+}
+
+.links-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.peril {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.underwriter-info {
+    font-size: 8px;
+}
+
+.toggle-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .header {
+      font-size: 20px;
+      text-align: center;
+    }
+  
+    .perils-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .toggle-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .links-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .underwriter-info {
+      font-size: 9px;
+      text-align: left;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .perils-container {
+      grid-template-columns: 1fr;
+    }
+  
+    .header {
+      font-size: 18px;
+    }
+  
+    .toggle-container input[type="radio"] {
+      transform: scale(1.2);
+    }
+  }

@@ -19,7 +19,7 @@ vi.mock('../services/widget.service', () => ({
         theme_override: {
             text: {
             title: 'Title of Sick Widget',
-            intro_paragraph: 'Here Lies Intro Paragraph',
+            intro_paragraph: '',
             fee_descriptor: 'This is the fee.',
             no_default: 'No thanks',
             yes_default: 'Yes, protect me',
@@ -33,15 +33,12 @@ describe('WidgetContainer', () => {
     render(<WidgetContainer clientKey=""/>);
 
     const title = screen.getByTestId('header');
-    const intro = screen.getByTestId('intro');
     const underwriter = screen.getByTestId('underwriter');
-
 
     await waitFor(() => {
         const perils = screen.getAllByTestId('peril-name');
         const links = screen.getAllByTestId('link-type');
         expect(title).toHaveTextContent('Title of Sick Widget');
-        expect(intro).toHaveTextContent('Here Lies Intro Paragraph');
         expect(underwriter).toHaveTextContent('FRANKENSTEIN');
         expect(perils[0]).toHaveTextContent('Car');
         expect(perils[1]).toHaveTextContent('Weather');

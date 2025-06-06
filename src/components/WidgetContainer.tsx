@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Icon } from '@mui/material';
-import '../styles/style.css'; // Adjust the path as necessary
-import { getWidgetData } from '../services/widget.service';
+import '../styles/WidgetContainer.style.css';
+
 import type { WidgetData } from '../models/WidgetData.model';
+import { getWidgetData } from '../services/widget.service';
 
 interface WidgetContainerProps {
     clientKey: string;
@@ -17,7 +18,6 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
         const fetchData = async () => {
             try {
                 getWidgetData().then((res) => {
-                    console.log(res);
                     const modifiedPerils = res.perils.map((peril: any) => ({
                         ...peril,
                         icon: peril.icon.toLowerCase(),
@@ -47,7 +47,6 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
                 });
             } catch (err) {
                 console.error('Error fetching widget data:', err);
-            } finally {
             }
         };
 
@@ -81,6 +80,8 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
         <div className="container">
             <div data-testid="header" className="header">{widgetData?.text.title}</div>
             <div data-testid="intro">
+                By enrolling in this coverage, your total purchase of {widgetData?.quote_literal} will be protected. 
+                <br />
                 {widgetData?.text.intro_paragraph}
             </div>
             <div className="perils-container">
@@ -91,16 +92,18 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
                     </div>
                 ))}
             </div>
-            <div>    
-                <input
-                    type="radio"
-                    name="protection"
-                    value="yes"
-                    checked={isProtected}
-                    onChange={handleCheckboxChange}
-                />
-                <span>{widgetData?.text.yes_default }</span>
-
+            <div className='toggle-container'>
+                <div>
+                    <input
+                        type="radio"
+                        name="protection"
+                        value="yes"
+                        checked={isProtected}
+                        onChange={handleCheckboxChange}
+                    />
+                    <span>{widgetData?.text.yes_default }</span>
+                </div>
+                <div>
                 <input
                     type="radio"
                     name="protection"
@@ -108,6 +111,7 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
                     onChange={handleCheckboxChange}
                 />
                 <span>{widgetData?.text.no_default }</span>
+                </div>
             </div>
             <div className="links-container">
                 {widgetData?.links && widgetData.links.map((link, index) => (
