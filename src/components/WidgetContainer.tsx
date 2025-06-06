@@ -3,7 +3,7 @@ import { Icon } from '@mui/material';
 import '../styles/WidgetContainer.style.css';
 
 import type { WidgetData } from '../models/WidgetData.model';
-import { getWidgetData } from '../services/widget.service';
+import { getWidgetData } from '../services/Widget.service';
 
 export function WidgetContainer() {
     const [widgetData, setWidgetData] = useState<WidgetData>();
