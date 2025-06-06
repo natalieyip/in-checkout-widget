@@ -10,5 +10,5 @@ export type WidgetData = {
     underwriter: Underwriter;
     perils: Peril[];
     links: Link[];
-    text: WidgetVerbiage
+    text: WidgetVerbiage;
 };

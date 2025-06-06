@@ -18,33 +18,33 @@ vi.mock('../services/widget.service', () => ({
         quote_literal: '$9.99',
         theme_override: {
             text: {
-            title: 'Title of Sick Widget',
-            intro_paragraph: '',
-            fee_descriptor: 'This is the fee.',
-            no_default: 'No thanks',
-            yes_default: 'Yes, protect me',
+                title: 'Title of Sick Widget',
+                intro_paragraph: '',
+                fee_descriptor: 'This is the fee.',
+                no_default: 'No thanks',
+                yes_default: 'Yes, protect me',
             },
         },
     }),
 }));
 
 describe('WidgetContainer', () => {
-  it('renders widget data from API', async () => {
-    render(<WidgetContainer clientKey=""/>);
+    it('renders widget data from API', async () => {
+        render(<WidgetContainer clientKey="" />);
 
-    const title = screen.getByTestId('header');
-    const underwriter = screen.getByTestId('underwriter');
+        const title = screen.getByTestId('header');
+        const underwriter = screen.getByTestId('underwriter');
 
-    await waitFor(() => {
-        const perils = screen.getAllByTestId('peril-name');
-        const links = screen.getAllByTestId('link-type');
-        expect(title).toHaveTextContent('Title of Sick Widget');
-        expect(underwriter).toHaveTextContent('FRANKENSTEIN');
-        expect(perils[0]).toHaveTextContent('Car');
-        expect(perils[1]).toHaveTextContent('Weather');
-        expect(links[0]).toHaveTextContent('Terms of Service');
-        expect(links[1]).toHaveTextContent('Privacy Policy');
-        expect(links[2]).toHaveTextContent('FAQ');
+        await waitFor(() => {
+            const perils = screen.getAllByTestId('peril-name');
+            const links = screen.getAllByTestId('link-type');
+            expect(title).toHaveTextContent('Title of Sick Widget');
+            expect(underwriter).toHaveTextContent('FRANKENSTEIN');
+            expect(perils[0]).toHaveTextContent('Car');
+            expect(perils[1]).toHaveTextContent('Weather');
+            expect(links[0]).toHaveTextContent('Terms of Service');
+            expect(links[1]).toHaveTextContent('Privacy Policy');
+            expect(links[2]).toHaveTextContent('FAQ');
+        });
     });
-  });
 });

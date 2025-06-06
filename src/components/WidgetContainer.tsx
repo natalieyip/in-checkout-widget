@@ -26,7 +26,7 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
                     const modifiedLinks = res.links.map((link: any) => ({
                         ...link,
                         type: mapLinkTypes(link.type),
-                      }));
+                    }));
 
                     setWidgetData({
                         ...res,
@@ -36,14 +36,14 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
                         quote_literal: res.quote_literal,
                         text: {
                             title: res.theme_override.text.title,
-                            intro_paragraph: res.theme_override.text.intro_paragraph,
-                            fee_descriptor: res.theme_override.text.fee_descriptor,
+                            intro_paragraph:
+                                res.theme_override.text.intro_paragraph,
+                            fee_descriptor:
+                                res.theme_override.text.fee_descriptor,
                             no_default: res.theme_override.text.no_default,
-                            yes_default: res.theme_override.text.yes_default
-                        }
+                            yes_default: res.theme_override.text.yes_default,
+                        },
                     });
-
-
                 });
             } catch (err) {
                 console.error('Error fetching widget data:', err);
@@ -78,21 +78,28 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
 
     return (
         <div className="container">
-            <div data-testid="header" className="header">{widgetData?.text.title}</div>
+            <div data-testid="header" className="header">
+                {widgetData?.text.title}
+            </div>
             <div data-testid="intro">
-                By enrolling in this coverage, your total purchase of {widgetData?.quote_literal} will be protected. 
+                By enrolling in this coverage, your total purchase of{' '}
+                {widgetData?.quote_literal} will be protected.
                 <br />
                 {widgetData?.text.intro_paragraph}
             </div>
             <div className="perils-container">
                 {widgetData?.perils.map((peril, index) => (
                     <div key={index} className="peril">
-                        <Icon fontSize="small">{peril.icon === 'carcrash' ? 'car_crash' : peril.icon}</Icon>
+                        <Icon fontSize="small">
+                            {peril.icon === 'carcrash'
+                                ? 'car_crash'
+                                : peril.icon}
+                        </Icon>
                         <div data-testid="peril-name">{peril.name}</div>
                     </div>
                 ))}
             </div>
-            <div className='toggle-container'>
+            <div className="toggle-container">
                 <div>
                     <input
                         type="radio"
@@ -101,32 +108,31 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
                         checked={isProtected}
                         onChange={handleCheckboxChange}
                     />
-                    <span>{widgetData?.text.yes_default }</span>
+                    <span>{widgetData?.text.yes_default}</span>
                 </div>
                 <div>
-                <input
-                    type="radio"
-                    name="protection"
-                    value="no"
-                    onChange={handleCheckboxChange}
-                />
-                <span>{widgetData?.text.no_default }</span>
+                    <input
+                        type="radio"
+                        name="protection"
+                        value="no"
+                        onChange={handleCheckboxChange}
+                    />
+                    <span>{widgetData?.text.no_default}</span>
                 </div>
             </div>
             <div className="links-container">
-                {widgetData?.links && widgetData.links.map((link, index) => (
-                    <div key={index}>
-                        <a
-                            href={link.url}
-                            target="_blank"
-                        >
-                            <span data-testid="link-type">{link.type}</span>
-                        </a>
-                    </div>
-                ))}
+                {widgetData?.links &&
+                    widgetData.links.map((link, index) => (
+                        <div key={index}>
+                            <a href={link.url} target="_blank">
+                                <span data-testid="link-type">{link.type}</span>
+                            </a>
+                        </div>
+                    ))}
             </div>
             <div data-testid="underwriter" className="underwriter-info">
-                {widgetData?.underwriter && `Underwriter: ${widgetData.underwriter.name}`}
+                {widgetData?.underwriter &&
+                    `Underwriter: ${widgetData.underwriter.name}`}
             </div>
         </div>
     );
