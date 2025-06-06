@@ -1,4 +1,4 @@
-export const getWidgetData = async (clientKey: string) => {
+export const getWidgetData = async () => {
     const dummyBody = {
         currency: 'USD',
         items: [{ unit_cost: '200.00' }],
@@ -9,7 +9,7 @@ export const getWidgetData = async (clientKey: string) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-protecht-api-key': clientKey,
+
         },
         body: JSON.stringify(dummyBody),
       });

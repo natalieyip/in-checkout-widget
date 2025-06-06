@@ -1,5 +1,6 @@
 .header {
     font-weight: 700;
+    font-size: 24px;
 }
 
 .perils-container {
@@ -24,5 +25,5 @@
 }
 
 .underwriter-info {
-    font-size: 12px;
+    font-size: 8px;
 }

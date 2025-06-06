@@ -1,5 +1,5 @@
 import './App.css'
-import { WidgetContainer } from './widget/components/widget-container'
+import { WidgetContainer } from './components/widget-container'
 
 function App() {
 

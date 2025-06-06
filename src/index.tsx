@@ -1,11 +1,8 @@
 import { hydrateRoot } from 'react-dom/client';
 import './widget/styles/style.css';
-import { WidgetContainer } from './widget/components/widget-container';
-
-console.log('Widget script loaded');
+import { WidgetContainer } from './components/widget-container';
 
 function initializeWidget() {
-  console.log('am i doing anything?');
   if (document.readyState !== 'loading') {
     onReady();
   } else {
@@ -69,7 +66,3 @@ function getDataConfig() {
 }
 
 initializeWidget();
-
-(window as any).loadMyWidget = function () {
-  onReady(); // or call onReady() directly
-};
