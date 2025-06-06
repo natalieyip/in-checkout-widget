@@ -14,7 +14,7 @@ export const getWidgetData = async (clientKey: string, dataReceived: any) => {
                 'Content-Type': 'application/json',
                 'x-protecht-api-key': clientKey,
             },
-            body: JSON.stringify(dummyBody),
+            body: JSON.stringify(dataReceived || dummyBody),
         }
     );
 
