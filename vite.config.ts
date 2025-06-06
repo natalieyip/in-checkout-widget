@@ -8,11 +8,11 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        app: path.resolve(__dirname, 'index.html'),        // for local dev
-        widget: path.resolve(__dirname, 'src/index.tsx'),  // 👈 this makes it build
+        app: path.resolve(__dirname, 'index.html'),  
+        widget: path.resolve(__dirname, './src/index.tsx'),
       },
       output: {
-        entryFileNames: 'assets/widget.js', // optional: predictable output name
+        entryFileNames: 'assets/widget.js', 
       },
     },
   },
