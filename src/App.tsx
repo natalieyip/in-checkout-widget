@@ -4,7 +4,7 @@ import { WidgetContainer } from './components/WidgetContainer';
 function App() {
     return (
         <>
-            <WidgetContainer clientKey="test" />
+            <WidgetContainer />
         </>
     );
 }

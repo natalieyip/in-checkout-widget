@@ -30,7 +30,7 @@ vi.mock('../services/widget.service', () => ({
 
 describe('WidgetContainer', () => {
     it('renders widget data from API', async () => {
-        render(<WidgetContainer clientKey="" />);
+        render(<WidgetContainer />);
 
         const title = screen.getByTestId('header');
         const underwriter = screen.getByTestId('underwriter');
