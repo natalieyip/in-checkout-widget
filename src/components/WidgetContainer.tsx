@@ -6,7 +6,15 @@ import type { WidgetData } from '../models/WidgetData.model';
 import { getWidgetData } from '../services/widget.service';
 
 
-export function WidgetContainer() {
+interface WidgetContainerProps {
+    clientKey: string;
+    dataReceived?: any;
+  }
+
+export function WidgetContainer({ clientKey, dataReceived } : WidgetContainerProps) {
+    console.log(dataReceived);
+    console.log(clientKey);
+    
     const [widgetData, setWidgetData] = useState<WidgetData>();
     const [isProtected, setIsProtected] = useState(true);
 

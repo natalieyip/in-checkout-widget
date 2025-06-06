@@ -15,14 +15,14 @@ function onReady() {
         const element = document.createElement('div');
         const shadow = element.attachShadow({ mode: 'open' });
         const shadowRoot = document.createElement('div');
-        // const clientKey = getClientKey();
+        const clientKey = getClientKey();
         const dataConfig = getDataConfig();
         console.log('Widget data config:', dataConfig);
 
         shadowRoot.id = 'widget-root';
 
         const component = (
-            <WidgetContainer />
+            <WidgetContainer clientKey={clientKey}/>
         );
 
         shadow.appendChild(shadowRoot);
@@ -43,16 +43,16 @@ function injectStyle(shadowRoot: HTMLElement) {
     shadowRoot.appendChild(link);
 }
 
-// function getClientKey() {
-//     const script = document.currentScript as HTMLScriptElement;
-//     const clientKey = script?.getAttribute('data-client-key');
+function getClientKey() {
+    const script = document.currentScript as HTMLScriptElement;
+    const clientKey = script?.getAttribute('data-client-key');
 
-//     if (!clientKey) {
-//         throw new Error('Missing data-client-key attribute');
-//     }
+    if (!clientKey) {
+        throw new Error('Missing data-client-key attribute');
+    }
 
-//     return clientKey;
-// }
+    return clientKey;
+}
 
 function getDataConfig() {
     const script = document.currentScript as HTMLScriptElement;
