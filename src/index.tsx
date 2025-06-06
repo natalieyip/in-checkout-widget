@@ -40,7 +40,7 @@ function injectStyle(shadowRoot: HTMLElement) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     // const fileName = process.env.WIDGET_NAME || 'widget';
-    link.href = 'https://in-checkout-widget.vercel.app/widget.css';
+    link.href = 'https://in-checkout-widget.vercel.app/assets/widget-B-PDStqM.css';
     shadowRoot.appendChild(link);
 }
 
