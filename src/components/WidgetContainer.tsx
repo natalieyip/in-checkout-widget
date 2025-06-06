@@ -5,12 +5,7 @@ import '../styles/WidgetContainer.style.css';
 import type { WidgetData } from '../models/WidgetData.model';
 import { getWidgetData } from '../services/widget.service';
 
-interface WidgetContainerProps {
-    clientKey: string;
-    dataReceived?: any;
-}
-
-export function WidgetContainer({ clientKey }: WidgetContainerProps) {
+export function WidgetContainer() {
     const [widgetData, setWidgetData] = useState<WidgetData>();
     const [isProtected, setIsProtected] = useState(true);
 
