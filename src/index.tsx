@@ -36,10 +36,18 @@ function onReady() {
 }
 
 function injectStyle(shadowRoot: HTMLElement) {
+    // const link = document.createElement('link');
+    // link.rel = 'stylesheet';
+    // const fileName = process.env.WIDGET_NAME || 'widget';
+    // link.href = 'https://in-checkout-widget.vercel.app/assets/widget-B-PDStqM.css';
+    // shadowRoot.appendChild(link);
+    // console.log(shadowRoot, 'Shadow root for widget styles');
+
     const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    const fileName = process.env.WIDGET_NAME || 'widget';
-    link.href = 'https://in-checkout-widget.vercel.app/assets/widget-B-PDStqM.css';
+    link.setAttribute('rel', 'stylesheet');
+    link.setAttribute('type', 'text/css');
+    link.setAttribute('href', 'https://in-checkout-widget.vercel.app/assets/widget-B-PDStqM.css');
+    
     shadowRoot.appendChild(link);
     console.log(shadowRoot, 'Shadow root for widget styles');
 }
