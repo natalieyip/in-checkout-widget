@@ -36,11 +36,9 @@ function onReady() {
 
 function injectStyle(shadowRoot: HTMLElement) {
     const link = document.createElement('link');
-    // link.rel = 'stylesheet';
-    link.setAttribute('rel', 'stylesheet');
-    link.setAttribute('href', 'https://in-checkout-widget.vercel.app/assets/widget-B-PDStqM.css');
-    // const fileName = process.env.WIDGET_NAME || 'widget';
-    // link.href = process.env.WIDGET_CSS_URL || `/${fileName}.css`;
+    link.rel = 'stylesheet';
+    const fileName = process.env.WIDGET_NAME || 'widget';
+    link.href = process.env.WIDGET_CSS_URL || `/${fileName}.css`;
     shadowRoot.appendChild(link);
 }
 
