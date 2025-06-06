@@ -6,7 +6,7 @@ This repository contains my submission for Protecht's Frontend Engineering Exerc
 - ⚛️ Built with **React + TypeScript**
 - 🎨 Fully styled and responsive using **CSS Grid/Flexbox**
 - 🧪 Unit tested using **Vitest**
-- 🏗️ Bundled with **Vite**
+- 🏗️ Bundled with **Vite** and deployed with **Vercel**
 
 ## Running Project Locally
 
