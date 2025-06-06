@@ -17,12 +17,11 @@ function onReady() {
         const shadowRoot = document.createElement('div');
         const clientKey = getClientKey();
         const dataConfig = getDataConfig();
-        console.log('Widget data config:', dataConfig);
 
         shadowRoot.id = 'widget-root';
 
         const component = (
-            <WidgetContainer clientKey={clientKey}/>
+            <WidgetContainer clientKey={clientKey} dataReceived={dataConfig}/>
         );
 
         shadow.appendChild(shadowRoot);
@@ -36,20 +35,11 @@ function onReady() {
 }
 
 function injectStyle(shadowRoot: HTMLElement) {
-    // const link = document.createElement('link');
-    // link.rel = 'stylesheet';
-    // const fileName = process.env.WIDGET_NAME || 'widget';
-    // link.href = 'https://in-checkout-widget.vercel.app/assets/widget-B-PDStqM.css';
-    // shadowRoot.appendChild(link);
-    // console.log(shadowRoot, 'Shadow root for widget styles');
-
     const link = document.createElement('link');
-    link.setAttribute('rel', 'stylesheet');
-    link.setAttribute('type', 'text/css');
-    link.setAttribute('href', 'https://in-checkout-widget.vercel.app/assets/widget-B-PDStqM.css');
-    
+    link.rel = 'stylesheet';
+    const fileName = process.env.WIDGET_NAME || 'widget';
+    link.href = process.env.WIDGET_CSS_URL || `/${fileName}.css`;
     shadowRoot.appendChild(link);
-    console.log(shadowRoot, 'Shadow root for widget styles');
 }
 
 function getClientKey() {

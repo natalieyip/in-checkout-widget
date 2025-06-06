@@ -38,3 +38,6 @@ If everything goes dandy, then you should be able to add to the script like so t
     data-config="YOUR_CONFIG">
   </script>
 ```
+
+## Widget Screenshot 
+![ICW Widget](/public/WidgetScreenshot.png) 

@@ -12,16 +12,14 @@ interface WidgetContainerProps {
   }
 
 export function WidgetContainer({ clientKey, dataReceived } : WidgetContainerProps) {
-    console.log(dataReceived);
-    console.log(clientKey);
-
+    console.log(dataReceived, 'Data received in WidgetContainer');
     const [widgetData, setWidgetData] = useState<WidgetData>();
     const [isProtected, setIsProtected] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                getWidgetData(clientKey).then((res) => {
+                getWidgetData(clientKey, dataReceived).then((res) => {
                     const modifiedPerils = res.perils.map((peril: any) => ({
                         ...peril,
                         icon: peril.icon.toLowerCase(),
