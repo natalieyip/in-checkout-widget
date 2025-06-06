@@ -5,10 +5,9 @@
 }
 
 .perils-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 10px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .links-container {

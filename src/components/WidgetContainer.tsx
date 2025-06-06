@@ -11,6 +11,7 @@ interface WidgetContainerProps {
 
 export function WidgetContainer({ clientKey }: WidgetContainerProps) {
     const [widgetData, setWidgetData] = useState<WidgetData>();
+    const [isProtected, setIsProtected] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -72,6 +73,10 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
         }
     }
 
+    function handleCheckboxChange() {
+        setIsProtected((prev) => !prev);
+    }
+
     return (
         <div className="container">
             <div className="header">{widgetData?.text.title}</div>
@@ -86,7 +91,27 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
                     </div>
                 ))}
             </div>
-            <div>This is where the toggles will go</div>
+            <div>    
+                <label>
+                    <input
+                        type="radio"
+                        name="protection"
+                        value="yes"
+                        checked={isProtected}
+                        onChange={handleCheckboxChange}
+                    />
+                    <span>{widgetData?.text.yes_default }</span>
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="protection"
+                        value="no"
+                        onChange={handleCheckboxChange}
+                    />
+                    <span>{widgetData?.text.no_default }</span>
+                </label>
+            </div>
             <div className="links-container">
                 {widgetData?.links && widgetData.links.map((link, index) => (
                     <div key={index}>
