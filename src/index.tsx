@@ -46,7 +46,7 @@ function injectStyle(shadowRoot: HTMLElement) {
 
 function getClientKey() {
     console.log('Getting client key');
-    const script = document.currentScript as HTMLScriptElement;
+    const script = document.getElementById('my-icw-widget-script') as HTMLScriptElement;
     const clientKey = script?.getAttribute('data-client-key');
 
     if (!clientKey) {
@@ -57,7 +57,7 @@ function getClientKey() {
 }
 
 function getDataConfig() {
-    const script = document.currentScript as HTMLScriptElement;
+    const script = document.getElementById('my-icw-widget-script') as HTMLScriptElement;
     const clientKey = script?.getAttribute('data-config');
 
     if (!clientKey) {

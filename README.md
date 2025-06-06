@@ -24,3 +24,15 @@ To run the tests in the widget, simply run
 ```bash
 npx vitest
 ```
+
+## Embedding Widget
+
+If everything goes dandy, then you should be able to add the script like so. 
+
+```html
+  <script 
+    type="module"
+    src="https://in-checkout-widget.vercel.app/assets/widget.js" 
+    data-client-key="YOUR_API_KEY">
+  </script>
+```
