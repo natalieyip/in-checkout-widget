@@ -79,38 +79,35 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
 
     return (
         <div className="container">
-            <div className="header">{widgetData?.text.title}</div>
-            <div>
+            <div data-testid="header" className="header">{widgetData?.text.title}</div>
+            <div data-testid="intro">
                 {widgetData?.text.intro_paragraph}
             </div>
             <div className="perils-container">
                 {widgetData?.perils.map((peril, index) => (
                     <div key={index} className="peril">
-                        <Icon fontSize="small">{peril.icon}</Icon>
-                        <div>{peril.name}</div>
+                        <Icon fontSize="small">{peril.icon === 'carcrash' ? 'car_crash' : peril.icon}</Icon>
+                        <div data-testid="peril-name">{peril.name}</div>
                     </div>
                 ))}
             </div>
             <div>    
-                <label>
-                    <input
-                        type="radio"
-                        name="protection"
-                        value="yes"
-                        checked={isProtected}
-                        onChange={handleCheckboxChange}
-                    />
-                    <span>{widgetData?.text.yes_default }</span>
-                </label>
-                <label>
-                    <input
-                        type="radio"
-                        name="protection"
-                        value="no"
-                        onChange={handleCheckboxChange}
-                    />
-                    <span>{widgetData?.text.no_default }</span>
-                </label>
+                <input
+                    type="radio"
+                    name="protection"
+                    value="yes"
+                    checked={isProtected}
+                    onChange={handleCheckboxChange}
+                />
+                <span>{widgetData?.text.yes_default }</span>
+
+                <input
+                    type="radio"
+                    name="protection"
+                    value="no"
+                    onChange={handleCheckboxChange}
+                />
+                <span>{widgetData?.text.no_default }</span>
             </div>
             <div className="links-container">
                 {widgetData?.links && widgetData.links.map((link, index) => (
@@ -119,12 +116,12 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
                             href={link.url}
                             target="_blank"
                         >
-                            <span>{link.type}</span>
+                            <span data-testid="link-type">{link.type}</span>
                         </a>
                     </div>
                 ))}
             </div>
-            <div className="underwriter-info">
+            <div data-testid="underwriter" className="underwriter-info">
                 {widgetData?.underwriter && `Underwriter: ${widgetData.underwriter.name}`}
             </div>
         </div>
