@@ -27,12 +27,14 @@ npx vitest
 
 ## Embedding Widget
 
-If everything goes dandy, then you should be able to add the script like so. 
+If everything goes dandy, then you should be able to add to the script like so to your host file.
 
 ```html
   <script 
+    id="my-icw-widget-script"
     type="module"
     src="https://in-checkout-widget.vercel.app/assets/widget.js" 
-    data-client-key="YOUR_API_KEY">
+    data-client-key="YOUR_API_KEY"
+    data-config="YOUR_CONFIG">
   </script>
 ```
