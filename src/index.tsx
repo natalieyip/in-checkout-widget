@@ -2,7 +2,6 @@ import { hydrateRoot } from 'react-dom/client';
 import './styles/WidgetContainer.style.css';
 import { WidgetContainer } from './components/WidgetContainer';
 
-console.log('Widget script loaded');
 function initializeWidget() {
     if (document.readyState !== 'loading') {
         onReady();
@@ -39,9 +38,10 @@ function onReady() {
 function injectStyle(shadowRoot: HTMLElement) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    // const fileName = process.env.WIDGET_NAME || 'widget';
+    const fileName = process.env.WIDGET_NAME || 'widget';
     link.href = 'https://in-checkout-widget.vercel.app/assets/widget-B-PDStqM.css';
     shadowRoot.appendChild(link);
+    console.log(shadowRoot, 'Shadow root for widget styles');
 }
 
 function getClientKey() {
