@@ -56,13 +56,13 @@ function getClientKey() {
 
 function getDataConfig() {
     const script = document.getElementById('my-icw-widget-script') as HTMLScriptElement;
-    const clientKey = script?.getAttribute('data-config');
+    const dataConfig = script?.getAttribute('data-config');
 
-    if (!clientKey) {
+    if (!dataConfig) {
         throw new Error('Missing data-config attribute');
     }
 
-    return clientKey;
+    return JSON.parse(dataConfig);
 }
 
 initializeWidget();
