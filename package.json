@@ -8,7 +8,7 @@
         "build": "tsc -b && vite build",
         "lint": "eslint .",
         "preview": "vite preview",
-        "build:widget": "rollup -c ./rollup.config.mjs",
+        "build:widget": "rollup -c ./rollup.config.mjs && vite build",
         "build:widget:production": "rollup -c ./rollup.config.mjs --environment=production",
         "serve": "npx http-server ./test --cors -p 3333",
         "serve:widget": "npx http-server ./dist --cors -p 3334"
