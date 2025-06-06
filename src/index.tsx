@@ -2,6 +2,7 @@ import { hydrateRoot } from 'react-dom/client';
 import './styles/WidgetContainer.style.css';
 import { WidgetContainer } from './components/WidgetContainer';
 
+console.log('Widget script loaded');
 function initializeWidget() {
     if (document.readyState !== 'loading') {
         onReady();
@@ -44,6 +45,7 @@ function injectStyle(shadowRoot: HTMLElement) {
 }
 
 function getClientKey() {
+    console.log('Getting client key');
     const script = document.currentScript as HTMLScriptElement;
     const clientKey = script?.getAttribute('data-client-key');
 
