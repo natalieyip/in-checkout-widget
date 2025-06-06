@@ -12,7 +12,6 @@ interface WidgetContainerProps {
   }
 
 export function WidgetContainer({ clientKey, dataReceived } : WidgetContainerProps) {
-    console.log(dataReceived, 'Data received in WidgetContainer');
     const [widgetData, setWidgetData] = useState<WidgetData>();
     const [isProtected, setIsProtected] = useState(true);
 

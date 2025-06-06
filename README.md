@@ -35,8 +35,14 @@ If everything goes dandy, then you should be able to add to the script like so t
     type="module"
     src="https://in-checkout-widget.vercel.app/assets/widget.js" 
     data-client-key="YOUR_API_KEY"
-    data-config="YOUR_CONFIG">
+    data-config='YOUR_CONFIG_IN_JSON'>
   </script>
+```
+
+Here is an demo config you can use 
+
+```bash
+"{"currency":"USD","items":[{"unit_cost":"200.00"}],"locale":"en_US"}"
 ```
 
 ## Widget Screenshot 

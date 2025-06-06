@@ -1,12 +1,4 @@
 export const getWidgetData = async (clientKey: string, dataReceived: any) => {
-    const dummyBody = {
-        currency: 'USD',
-        items: [{ unit_cost: '200.00' }],
-        locale: 'en_US',
-    };
-    console.log(dataReceived, 'Data received in getWidgetData');
-    console.log(typeof dataReceived, 'Data received in getWidgetData');
-
     const result = await fetch(
         `https://api.sandbox.protecht.com/api/internal/widgets/icw/configure/v4`,
         {
