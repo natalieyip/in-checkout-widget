@@ -1,5 +1,5 @@
 import { hydrateRoot } from 'react-dom/client';
-import widgetCss from './styles/WidgetContainer.style.css?inline';
+import './styles/WidgetContainer.style.css';
 import { WidgetContainer } from './components/WidgetContainer';
 
 function initializeWidget() {
@@ -35,14 +35,13 @@ function onReady() {
 }
 
 function injectStyle(shadowRoot: HTMLElement) {
-    const style = document.createElement('style');
-    style.textContent = widgetCss;
-    shadowRoot.appendChild(style);
-    // const link = document.createElement('link');
+    const link = document.createElement('link');
     // link.rel = 'stylesheet';
+    link.setAttribute('rel', 'stylesheet');
+    link.setAttribute('href', 'https://in-checkout-widget.vercel.app/assets/widget-B-PDStqM.css');
     // const fileName = process.env.WIDGET_NAME || 'widget';
     // link.href = process.env.WIDGET_CSS_URL || `/${fileName}.css`;
-    // shadowRoot.appendChild(link);
+    shadowRoot.appendChild(link);
 }
 
 function getClientKey() {
